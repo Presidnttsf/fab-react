@@ -331,8 +331,7 @@ body .elementor,
 body .elementor-section,
 body .elementor-container {
   transform: none !important;
-
-`;
+}`;
 
 function logClick(payload) {
   fetch(`${LOG_BASE_URL}/api/v1/logs/click`, {
@@ -529,6 +528,9 @@ export default function CallMyDoctorWidget() {
       >
         <WaIcon size={38} />
       </button>
+
+
+
     </>
   );
 }
