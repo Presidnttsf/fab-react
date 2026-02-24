@@ -1,4 +1,6 @@
-import "../components/SideBar.css"
+import "../components/SideBar.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 function SideBar({ open, onClose }) {
   return (
@@ -10,8 +12,12 @@ function SideBar({ open, onClose }) {
         aria-hidden={!open}
       />
 
-      {/* Sidebar Drawer (RIGHT) */}
-      <aside className={`sidebar ${open ? "active" : ""}`} aria-hidden={!open}>
+      {/* Sidebar */}
+      <aside
+        className={`sidebar ${open ? "active" : ""}`}
+        aria-hidden={!open}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           className="sidebar-close"
           onClick={onClose}
@@ -21,22 +27,34 @@ function SideBar({ open, onClose }) {
           ✕
         </button>
 
-   <form className="sidebar-form">
-          <input type="text" placeholder="Full Name" />
-          <input type="tel" placeholder="Mobile Number" />
-          <input type="email" placeholder="Email Address" />
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="Area / Location" />
-          <input type="text" placeholder="Service Type" />
-          <input type="date" placeholder="Preferred Date" />
-          <input type="time" placeholder="Preferred Time" />
-          <input type="text" placeholder="Notes / Requirement" />
-          <input type="text" placeholder="Reference (Optional)" />
+        {/* ✅ Scroll container */}
+        <div className="sidebar-content">
+          <form className="sidebar-form">
+            <input type="text" placeholder="Full Name" />
+           <PhoneInput
+       country={"in"}          // default India (change if you want)
+              enableSearch
+              countryCodeEditable={false}
+              placeholder="Mobile Number"
+              inputClass="cmd-phone-input"
+              buttonClass="cmd-phone-flag"
+              dropdownClass="cmd-phone-dropdown"
+      />
+            <input type="email" placeholder="Email Address" />
+            <input type="text" placeholder="City" />
+            <input type="text" placeholder="Area / Location" />
+            <input type="text" placeholder="Service Type" />
+            <input type="date" />
+            <input type="time" />
+            <input type="text" placeholder="Notes / Requirement" />
+            <input type="text" placeholder="Reference (Optional)" />
 
-          <button type="submit" className="submit-btn">
-            Submit
-          </button>
-        </form>    </aside>
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
+          </form>
+        </div>
+      </aside>
     </>
   );
 }

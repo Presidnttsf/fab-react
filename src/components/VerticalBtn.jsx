@@ -74,21 +74,12 @@ const STYLES = `
 `;
 
 /* Message icon */
-const MessageIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="16"
-    height="16"
-    aria-hidden="true"
-    style={{transform: "rotate(90deg)"}}
-  >
-    <path
-      fill="currentColor"
-      d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"
-    />
+const MessageIcon = ({ size = 16 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true"
+       style={{ transform: "rotate(90deg)" }}>
+    <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
   </svg>
 );
-
 /**
  * VerticalBtn
  * Props:
@@ -98,7 +89,7 @@ const MessageIcon = () => (
  */
 export default function VerticalBtn({
   label = "Need A Nurse? (Select Package)",
-  onClick,
+  toggle,
   top = "40%",
 }) {
   const [pressed, setPressed] = useState(false);
@@ -106,7 +97,7 @@ export default function VerticalBtn({
   const handleClick = () => {
     setPressed(true);
     setTimeout(() => setPressed(false), 200);
-    if (onClick) onClick();
+    if (toggle) toggle();
   };  
 
   return (

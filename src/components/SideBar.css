@@ -22,7 +22,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
-  z-index: 9999;
+  z-index: 100;
 }
 .overlay.show {
   opacity: 1;
@@ -38,8 +38,8 @@ body {
   width: var(--sidebar-w);
   height: 100vh;
 
-  background: #0f172a;
-  color: #fff;
+  background: white;
+  color: black;
   padding: 20px;
 
   transform: translateX(100%);
@@ -66,32 +66,26 @@ body {
 
 /* Close button inside sidebar */
 .sidebar-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-
-  width: 36px;
-  height: 36px;
-
-  border-radius: 50%;
-  border: none;
-
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-
-  font-size: 20px;
-  font-weight: 700;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: background 0.2s ease, transform 0.2s ease;
+ position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: none;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 .sidebar-close:hover {
-  background: rgba(255,255,255,0.25);
-  transform: scale(1.05);
+ background: gray;          /* darker red on hover */
+  transform: scale(1.02);
+  box-shadow: 0 10px 22px rgba(185, 28, 28, 0.45);
 }
 
 /* Vertical Button (RIGHT) */
@@ -162,4 +156,94 @@ body {
 @media (max-width: 480px){
   .sidebar { padding: 16px; }
   .vertical-btn { padding: 9px 18px; font-size: 14px; }
+}
+
+/* Form wrapper */
+/* Sidebar inner content wrapper */
+.sidebar-content {
+  height: 100%;
+  padding-top: 60px;        /* space for close button */
+  overflow-y: auto;
+}
+
+/* Form layout */
+.sidebar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+/* Inputs */
+.sidebar-form input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  transition: all 0.2s ease;
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* Focus effect */
+.sidebar-form input:focus {
+  border-color: #30b230;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(48, 178, 48, 0.15);
+}
+
+/* Date & Time alignment fix */
+.sidebar-form input[type="date"],
+.sidebar-form input[type="time"] {
+  color: #374151;
+}
+
+/* Placeholder styling */
+.sidebar-form input::placeholder {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* Submit button */
+.submit-btn {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #30b230;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.submit-btn:hover {
+  background: #279427;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(48, 178, 48, 0.25);
+}
+
+/* Active press */
+.submit-btn:active {
+  transform: scale(0.97);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .sidebar-form {
+    padding: 15px;
+  }
+
+  .sidebar-form input {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .submit-btn {
+    font-size: 13px;
+    padding: 11px;
+  }
 }

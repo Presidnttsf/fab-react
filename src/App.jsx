@@ -37,9 +37,9 @@ function App() {
 {!open ? <VerticalBtn
   label="Need A Nurse ? (Select Package)"
   top="25%"    // 👈 change this — lower % = higher on screen
-  onClick={toggle}
+  toggle={toggle}
 /> : null}      
- <SideBar open={open} onClose={close} />
+ <SideBar open={open} onClose={close}  />
     </>
   )
 }
